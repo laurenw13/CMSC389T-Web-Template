@@ -1,10 +1,9 @@
-name: deployment workflow
+name: delete workflow
 on: 
-  push:
-    branches: [main]
+  workflow_dispatch:   
 jobs:
-  deploy:
-    name: Deploy
+  clean:
+    name: Clean
     runs-on: ubuntu-latest
     steps:
       - name: testing
@@ -15,5 +14,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-              cd CMSC389T-Web-Template
-              git pull
+             unalias rm
+             rm -rf CMSC389T-Web-Template

@@ -1,9 +1,10 @@
-name: clean workflow
+name: update workflow
 on: 
-  workflow_dispatch:   
+  push:
+    branches: [main]
 jobs:
-  clean:
-    name: Clean
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: testing
@@ -14,5 +15,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-             unalias rm
-             rm -rf CMSC389T-Web-Template
+              cd CMSC389T-Web-Template
+              git pull
